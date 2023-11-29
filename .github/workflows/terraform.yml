@@ -1,0 +1,78 @@
+name: 'Terraform Deploy'
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+defaults:
+      run:
+        shell: bash
+
+jobs:
+  QA:
+    name: 'QA'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+
+    - name: Checkov GitHub Action
+      uses: bridgecrewio/checkov-action@v12.1347.0
+      with:
+        quiet: true
+
+  terraform-deploy-iam:
+    needs: QA
+    name: 'Terraform Deploy IAM'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+   
+    - name: Terraform Init
+      working-directory: ./iam
+      run: terraform init --input=false --
+
+    - name: Terraform Plan
+      working-directory: ./iam
+      run: terraform plan -input=false
+    
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+      run: terraform apply -auto-approve -input=false
+
+  terraform-deploy-core-infra:
+    name: 'Terraform Deploy Core Infra'
+    runs-on: ubuntu-latest
+    needs: [QA,terraform-deploy-iam]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+   
+    - name: Terraform Init
+      working-directory: ./core_infra
+      run: terraform init
+
+    - name: Terraform Plan
+      working-directory: ./core_infra
+      run: terraform plan -input=false
+    
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+      run: terraform apply -auto-approve -input=false
