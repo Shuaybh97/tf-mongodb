@@ -29,3 +29,8 @@ resource "aws_iam_role" "gihub_actions" {
   assume_role_policy = data.aws_iam_policy_document.instance_assume_role_policy.json
 }
 
+
+resource "aws_iam_role_policy_attachment" "github_actions_tf_state" {
+  role       = aws_iam_role.gihub_actions.name
+  policy_arn = aws_iam_policy.terraform_state.arn
+}
