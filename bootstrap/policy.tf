@@ -4,8 +4,8 @@ data "aws_iam_policy_document" "terraform_state" {
 
     actions = [
       "s3:ListBucket",
-      "s3:GetObject", 
-      "s3:PutObject", 
+      "s3:GetObject",
+      "s3:PutObject",
       "s3:DeleteObject"
     ]
 
@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "terraform_state" {
       "arn:aws:s3:::${module.bootstrap.state_bucket}",
     ]
   }
-  
+
 }
 
 resource "aws_iam_policy" "terraform_state" {

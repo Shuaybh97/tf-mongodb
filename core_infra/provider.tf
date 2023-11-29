@@ -11,8 +11,12 @@ terraform {
       source  = "hashicorp/aws"
       version = "5.26.0"
     }
+    mongodbatlas = {
+      source  = "mongodb/mongodbatlas",
+    }
   }
 }
+
 
 provider "aws" {
   region = "us-east-1"
