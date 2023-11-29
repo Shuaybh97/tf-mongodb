@@ -28,7 +28,9 @@ jobs:
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
+        directory: ../
         quiet: true
+        output_format: cli
 
   terraform-deploy-iam:
     needs: QA
