@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "github_actions" {
     ]
 
     resources = [
-      "arn:aws:s3:::${module.bootstrap.state_bucket}",
+      "*",
     ]
   }
 
