@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Terraform Format
-      run: terraform fmt -check
+      run: terraform fmt --recursive --check
 
     - name: Terraform Validate
       id: validate
@@ -33,7 +33,8 @@ jobs:
         output_format: cli
 
   terraform-deploy-iam:
-    needs: QA
+    needs: 
+      - QA
     name: 'Terraform Deploy IAM'
     runs-on: ubuntu-latest
 
@@ -65,7 +66,9 @@ jobs:
   terraform-deploy-core-infra:
     name: 'Terraform Deploy Core Infra'
     runs-on: ubuntu-latest
-    needs: [QA,terraform-deploy-iam]
+    needs: 
+      - QA
+      - terraform-deploy-iam
 
     steps:
     - name: Checkout
