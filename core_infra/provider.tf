@@ -24,8 +24,8 @@ provider "aws" {
 }
 
 provider "mongodbatlas" {
-  public_key = var.mongodbatlas_public_key
-  private_key  = var.mongodbatlas_private_key
+  public_key = jsondecode(data.aws_secretsmanager_secret_version.secret-version.secret_string)["mongodbatlas_public_key"]
+  private_key  = jsondecode(data.aws_secretsmanager_secret_version.secret-version.secret_string)["mongodbatlas_private_key"]
 }
 
 
