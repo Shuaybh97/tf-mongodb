@@ -1,6 +1,6 @@
-data "aws_iam_policy_document" "terraform_state" {
+data "aws_iam_policy_document" "github_actions" {
   statement {
-    sid = "1"
+    sid = "S3BackendAccess"
 
     actions = [
       "s3:ListBucket",
@@ -14,9 +14,19 @@ data "aws_iam_policy_document" "terraform_state" {
     ]
   }
 
+  statement {
+    sid = "IAMFullAccess"
+
+    actions = [
+     "iam:*"
+    ]
+
+    resources = ["*"]
+  }
+
 }
 
-resource "aws_iam_policy" "terraform_state" {
+resource "aws_iam_policy" "gihub_actions" {
   name   = "github_actions_tf_state"
-  policy = data.aws_iam_policy_document.terraform_state.json
+  policy = data.aws_iam_policy_document.github_actions.json
 }
