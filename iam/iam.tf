@@ -3,6 +3,6 @@ data "aws_iam_role" "iam_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
-  role       = data.aws_iam_role.iam_role
+  role       = data.aws_iam_role.iam_role.arn
   policy_arn = aws_iam_policy.gihub_actions.arn
 }
