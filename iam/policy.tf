@@ -1,4 +1,14 @@
 data "aws_iam_policy_document" "gihub_actions" {
+  
+  statement {
+    sid = "IAMFullAccess"
+
+    actions = [
+      "iam:*"
+    ]
+
+    resources = ["*"]
+  }
   statement {
     sid = "SecretsMangerFullAccess"
 
