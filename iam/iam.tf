@@ -6,3 +6,8 @@ data "aws_iam_role" "iam_role" {
 #   role       = data.aws_iam_role.iam_role.name
 #   policy_arn = aws_iam_policy.gihub_actions.arn
 # }
+
+
+resource "aws_secretsmanager_secret" "example" {
+  name = "test-mongo"
+}
