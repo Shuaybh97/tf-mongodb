@@ -25,6 +25,19 @@ data "aws_iam_policy_document" "github_actions" {
   }
 
   statement {
+    sid = "DynamoDBStateLocking"
+
+    actions = [
+      "dynamodb:DescribeTable",
+      "dynamodb:GetItem",
+      "dynamodb:PutItem",
+      "dynamodb:DeleteItem"
+   ]
+
+    resources = ["*"]
+  }
+
+  statement {
     sid = "KMSFullAccess"
 
     actions = [
