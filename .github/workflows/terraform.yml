@@ -60,6 +60,7 @@ jobs:
       run: terraform plan -input=false
     
     - name: Terraform Apply
+      working-directory: ./iam
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
 
@@ -92,5 +93,6 @@ jobs:
       run: terraform plan -input=false
     
     - name: Terraform Apply
+      working-directory: ./core_infra
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
