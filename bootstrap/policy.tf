@@ -24,6 +24,16 @@ data "aws_iam_policy_document" "github_actions" {
     resources = ["*"]
   }
 
+  statement {
+    sid = "KMSFullAccess"
+
+    actions = [
+     "kms:*"
+    ]
+
+    resources = ["*"]
+  }
+
 }
 
 resource "aws_iam_policy" "gihub_actions" {
