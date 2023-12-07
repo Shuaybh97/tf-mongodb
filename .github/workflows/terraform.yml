@@ -25,15 +25,11 @@ jobs:
     - name: Terraform Format
       id: fmt
       run: terraform fmt -recursive -check 
-
-    - name: print wrd
-      run: pwd
-
+   
     - name: Terraform Validate
-      working-directory: 
       id: validate
       run: terraform validate -no-color
-
+      
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
