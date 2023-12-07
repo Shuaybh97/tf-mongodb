@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "github_actions" {
+data "aws_iam_policy_document" "bootstrap_policy" {
   statement {
     sid = "S3BackendAccess"
 
@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "github_actions" {
 
 }
 
-resource "aws_iam_policy" "gihub_actions" {
+resource "aws_iam_policy" "bootstrap_policy" {
   name   = "github_actions_tf_state"
-  policy = data.aws_iam_policy_document.github_actions.json
+  policy = data.aws_iam_policy_document.bootstrap_policy.json
 }

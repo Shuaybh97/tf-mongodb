@@ -32,5 +32,5 @@ resource "aws_iam_role" "gihub_actions" {
 
 resource "aws_iam_role_policy_attachment" "github_actions_tf_state" {
   role       = aws_iam_role.gihub_actions.name
-  policy_arn = aws_iam_policy.gihub_actions.arn
+  policy_arn = aws_iam_policy.bootstrap_policy.arn
 }

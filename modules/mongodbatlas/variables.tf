@@ -7,7 +7,6 @@ variable "project_id" {
 }
 
 variable "provider_name" {
-  default = "AWS"
   type    = string
 }
 
