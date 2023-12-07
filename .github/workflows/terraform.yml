@@ -21,16 +21,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Terraform Format
       id: fmt
-      run: terraform fmt -recursive -check .
+      run: terraform fmt -recursive -check 
 
     - name: print wrd
       run: pwd
 
     - name: Terraform Validate
-      working-directory: ./core_infra
+      working-directory: 
       id: validate
       run: terraform validate -no-color
 
