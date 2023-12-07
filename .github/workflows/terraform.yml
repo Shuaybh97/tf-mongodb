@@ -21,7 +21,10 @@ jobs:
     steps:
     - name: Terraform Format
       id: fmt
-      run: terraform fmt -recursive -check
+      run: terraform fmt -recursive -check .
+
+    - name: print wrd
+      run: pwd
 
     - name: Terraform Validate
       working-directory: ./core_infra
