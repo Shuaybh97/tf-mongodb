@@ -20,7 +20,6 @@ jobs:
 
     steps:
     - name: Terraform Format
-      working-directory: core_infra
       id: fmt
       run: terraform fmt --recursive --check
 
