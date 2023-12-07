@@ -16,26 +16,25 @@ jobs:
   QA:
     name: 'QA'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
+    working-directory: ./
 
     steps:
     - name: Terraform Format
+      working-directory: ./core_infra
       id: fmt
-      run: terraform fmt --recursive --check .
+      run: terraform fmt --recursive --check
 
     - name: Terraform Validate
+      working-directory: ./core_infra
       id: validate
-      run: terraform validate -no-color .
+      run: terraform validate -no-color
 
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
+        directory: ./core_infra
         quiet: true
-        framework: terraform
-        soft_fail: true
-        output_file_path: reports/results.sarif 
+        output_format: cli
 
   terraform-deploy-iam:
     needs: 
