@@ -90,7 +90,7 @@ jobs:
 
     - name: Terraform Plan
       working-directory: ./core_infra
-      run: terraform plan -input=false
+      run: terraform plan -var-file=./values.tfvars -input=false
     
     - name: Terraform Apply
       working-directory: ./core_infra
