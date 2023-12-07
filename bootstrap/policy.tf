@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "bootstrap_policy" {
     sid = "IAMFullAccess"
 
     actions = [
-     "iam:*"
+      "iam:*"
     ]
 
     resources = ["*"]
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "bootstrap_policy" {
       "dynamodb:GetItem",
       "dynamodb:PutItem",
       "dynamodb:DeleteItem"
-   ]
+    ]
 
     resources = ["*"]
   }
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "bootstrap_policy" {
     sid = "KMSFullAccess"
 
     actions = [
-     "kms:*"
+      "kms:*"
     ]
 
     resources = ["*"]

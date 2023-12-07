@@ -7,7 +7,7 @@ variable "project_id" {
 }
 
 variable "provider_name" {
-  type    = string
+  type = string
 }
 
 variable "provider_instance_size_name" {
@@ -33,4 +33,14 @@ variable "cloud_backup" {
 variable "auto_scaling_disk_gb_enabled" {
   type    = bool
   default = true
+}
+
+variable "instance_size" {
+  type    = string
+  default = "M0"
+}
+
+variable "region_name" {
+  type    = string
+  default = "US_EAST_1"
 }

@@ -1,9 +1,9 @@
 terraform {
 
   backend "s3" {
-    bucket = "mongodb-module-tf-state-us-east-1"
-    key    = "core-infra/terraform.tfstate"
-    region = "us-east-1"
+    bucket         = "mongodb-module-tf-state-us-east-1"
+    key            = "core-infra/terraform.tfstate"
+    region         = "us-east-1"
     dynamodb_table = "terraform-state-lock-mongodb-atlas"
   }
 
