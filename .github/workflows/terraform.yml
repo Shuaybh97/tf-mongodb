@@ -16,7 +16,7 @@ jobs:
   QA:
     name: 'QA'
     runs-on: ubuntu-latest
-    working-directory: ./
+    
 
     steps:
     - name: Terraform Format
