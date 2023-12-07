@@ -16,9 +16,11 @@ jobs:
   QA:
     name: 'QA'
     runs-on: ubuntu-latest
+    working-directory: ./
 
     steps:
     - name: Terraform Format
+      id: fmt
       run: terraform fmt --recursive --check
 
     - name: Terraform Validate
@@ -28,7 +30,6 @@ jobs:
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
-        directory: ../
         quiet: true
         output_format: cli
 
