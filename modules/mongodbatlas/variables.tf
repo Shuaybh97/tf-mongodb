@@ -3,7 +3,7 @@ variable "cluster_name" {
 }
 
 variable "project_id" {
-  type = number
+  type = string
 }
 
 variable "provider_name" {
