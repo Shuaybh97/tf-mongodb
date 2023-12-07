@@ -95,4 +95,4 @@ jobs:
     - name: Terraform Apply
       working-directory: ./core_infra
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve -input=false
+      run: terraform apply -var-file=./values.tfvars -auto-approve -input=false
