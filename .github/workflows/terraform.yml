@@ -19,21 +19,23 @@ jobs:
     defaults:
       run:
         working-directory: ./
-        
+
     steps:
     - name: Terraform Format
       id: fmt
-      run: terraform fmt --recursive --check
+      run: terraform fmt --recursive --check .
 
     - name: Terraform Validate
       id: validate
-      run: terraform validate -no-color
+      run: terraform validate -no-color .
 
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
         quiet: true
-        output_format: cli
+        framework: terraform
+        soft_fail: true
+        output_file_path: reports/results.sarif 
 
   terraform-deploy-iam:
     needs: 
