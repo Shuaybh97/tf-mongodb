@@ -27,5 +27,3 @@ provider "aws" {
 
 
 
-# pyinlbtt
-# 187a94e0-6afe-41de-98e8-6ae0b7cb7daf
