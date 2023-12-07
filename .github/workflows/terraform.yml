@@ -16,8 +16,10 @@ jobs:
   QA:
     name: 'QA'
     runs-on: ubuntu-latest
-    working-directory: ./
-
+    defaults:
+      run:
+        working-directory: ./
+        
     steps:
     - name: Terraform Format
       id: fmt
