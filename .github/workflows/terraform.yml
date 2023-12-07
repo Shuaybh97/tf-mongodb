@@ -21,7 +21,7 @@ jobs:
     steps:
     - name: Terraform Format
       id: fmt
-      run: terraform fmt --recursive --check
+      run: terraform fmt -recursive -check
 
     - name: Terraform Validate
       working-directory: ./core_infra
@@ -31,7 +31,6 @@ jobs:
     - name: Checkov GitHub Action
       uses: bridgecrewio/checkov-action@v12.1347.0
       with:
-        directory: ./core_infra
         quiet: true
         output_format: cli
 
