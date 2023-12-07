@@ -3,5 +3,5 @@ data "aws_secretsmanager_secret_version" "secret-version" {
 }
 
 data "aws_secretsmanager_secret" "secret" {
-  name =   "mongodb-atlas-api-key"
+  name = "mongodb-atlas-api-key"
 }
