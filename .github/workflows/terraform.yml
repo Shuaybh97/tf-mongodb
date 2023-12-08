@@ -35,7 +35,7 @@ jobs:
       with:
         quiet: true
         output_format: cli
-        soft-fail: true
+        soft_fail: true
 
   terraform-deploy-iam:
     needs: 
